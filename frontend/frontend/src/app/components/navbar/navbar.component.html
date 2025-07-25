@@ -1,0 +1,11 @@
+<nav class="navbar">
+  <span class="logo">Mi App</span>
+  <ul class="nav-links">
+    <li *ngIf="!estaAutenticado()"><a routerLink="/login">Login</a></li>
+    <li *ngIf="!estaAutenticado()"><a routerLink="/registro">Registro</a></li>
+    <li *ngIf="estaAutenticado()"><a routerLink="/dashboard">Dashboard</a></li>
+    <li *ngIf="estaAutenticado()"><a (click)="cerrarSesion()">Cerrar Sesión</a></li>
+  </ul>
+</nav>
+
+
