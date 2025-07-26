@@ -17,9 +17,11 @@ mongoose.connect(process.env.MONGODB_URI)
 // Rutas
 const authRoutes = require('./routes/auth');
 const rutaProtegida = require('./routes/protegida'); // Ruta con middleware
+const userRoutes = require('./routes/user');   // 🔹 NUEVA ruta para el CRUD
 
 app.use('/api/auth', authRoutes);
-app.use('/api', rutaProtegida); // /api/privado
+app.use('/api', rutaProtegida);        // ejemplo: /api/privado
+app.use('/api/usuarios', userRoutes);  // 🔹 ejemplo: /api/usuarios/:id
 
 // Ruta base de prueba
 app.get('/', (req, res) => {
@@ -31,4 +33,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor escuchando en http://localhost:${PORT}`);
 });
+
 

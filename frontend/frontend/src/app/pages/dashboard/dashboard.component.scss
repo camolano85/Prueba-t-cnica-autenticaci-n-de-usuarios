@@ -1,9 +1,27 @@
-:host {
-  display: block;
-  text-align: center;
-  padding: 2rem;
+.dashboard-card {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #f9f9f9;
 }
 
-button {
+.usuario-item {
+  margin-bottom: 1rem;
+}
+
+.usuario-card {
+  padding: 1rem;
+  background-color: #fff;
+}
+
+.editar-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
   margin-top: 2rem;
 }

@@ -1,6 +1,55 @@
-<h2>Bienvenido al Dashboard</h2>
+<mat-card class="dashboard-card">
+  <mat-card-header>
+    <mat-card-title>👤 Panel de Control</mat-card-title>
+    <mat-card-subtitle>Gestión de usuarios autenticados</mat-card-subtitle>
+  </mat-card-header>
 
-<p>Esta es una zona protegida. Solo puedes verla si estás autenticado.</p>
+  <mat-card-content>
+    <div *ngIf="usuarios.length === 0">
+      <p>No hay usuarios registrados.</p>
+    </div>
 
-<button mat-raised-button color="warn" (click)="logout()">Cerrar sesión</button>
+    <div *ngFor="let usuario of usuarios" class="usuario-item">
+      <mat-card class="usuario-card">
+        <div *ngIf="editandoId !== usuario._id">
+          <p><strong>👨 Nombre:</strong> {{ usuario.nombre }}</p>
+          <p><strong>📧 Email:</strong> {{ usuario.email }}</p>
+          <button mat-stroked-button color="primary" (click)="editar(usuario)">
+            ✏️ Editar
+          </button>
+          <button mat-stroked-button color="warn" (click)="eliminar(usuario._id)">
+            🗑️ Eliminar
+          </button>
+        </div>
+
+        <div *ngIf="editandoId === usuario._id" class="editar-formulario">
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="usuarioEditado.nombre" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="usuarioEditado.email" />
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" (click)="guardarCambios()">
+            💾 Guardar
+          </button>
+          <button mat-button (click)="cancelarEdicion()">
+            ❌ Cancelar
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="accent" (click)="logout()">🚪 Cerrar sesión</button>
+  </mat-card-actions>
+</mat-card>
+
+
+
+
 
