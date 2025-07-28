@@ -1,11 +1,15 @@
 const jwt = require('jsonwebtoken');
 
 const verificarToken = (req, res, next) => {
-  const token = req.header('Authorization');
+  let token = req.header('Authorization');
 
-  // Verifica si hay token
   if (!token) {
     return res.status(401).json({ msg: 'Acceso denegado. Token no enviado' });
+  }
+
+  // Permite formato "Bearer token"
+  if (token.startsWith('Bearer ')) {
+    token = token.slice(7); // Remueve "Bearer "
   }
 
   try {
@@ -18,3 +22,4 @@ const verificarToken = (req, res, next) => {
 };
 
 module.exports = verificarToken;
+
