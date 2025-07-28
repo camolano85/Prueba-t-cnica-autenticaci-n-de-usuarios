@@ -17,5 +17,11 @@ export class AuthService {
   login(datos: { email: string; password: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, datos);
   }
+
+  // ✅ Este método es necesario para que el interceptor funcione correctamente
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
 }
+
 
