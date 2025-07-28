@@ -1,8 +1,8 @@
-import { ApplicationConfig } from '@angular/core';
+// src/app/app.config.ts
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './../app/services/token.interceptor';
+import { TokenInterceptor } from './services/token.interceptor';
 
-export const appConfig: ApplicationConfig = {
+export const appConfig = {
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
